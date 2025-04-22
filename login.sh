@@ -13,7 +13,7 @@ cyan=$(tput setaf 6)
 reset=$(tput sgr0)
 
 first="╔═══════════════════════════════════════════╗"
-second="║                 Bienvenida                ║"
+second="║                 Bienvenido                ║"
 third="╚═══════════════════════════════════════════╝"
 
 #print the mark
@@ -45,11 +45,11 @@ read -p "¿Cuál es tu nombre de usuario?" usuario
 read -s -p "Ingrese contraseña: " pwd
 echo ""
 
-if echo $pwd | su -c "exit" "$usuario" %>/dev/null; then
+if echo "$pwd" | su -c "exit" "$usuario" &>/dev/null; then
 	echo "${verde}Autenticación exitosa, $usuario${reset}"
 	sleep 2
 	clear
-	terminal.sh
+	./shellproto.sh
 else
 	echo "${rojo}Acceso denegado${reset}"
 	exit 1
