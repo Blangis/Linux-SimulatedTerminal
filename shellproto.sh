@@ -14,6 +14,18 @@ function comandos(){
 	 echo "adios"
 	 exit 0
 	;;
+	ayuda)
+	./ayuda.sh
+	return 0
+	;;
+	buscar)
+	./searchFile.sh
+	return 0
+	;;
+	infosis)
+	source ./infosis.sh
+	return 0
+	;;
 	*)
 	 return 1
 	 ;;
