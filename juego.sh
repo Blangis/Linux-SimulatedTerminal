@@ -1,6 +1,18 @@
 #!/bin/bash
 clear
-echo "Vamos a jugar ahorcado, trata de adivinar la palabra:"
+#pongo colores random, no necesariamente corresponden
+verde_elect=$(tput setaf 154)
+rojo=$(tput setaf 1)
+rosa=$(tput setaf 197)
+morado=$(tput setaf 165)
+amarillo=$(tput setaf 226)
+naranja=$(tput setaf 9)
+cyan=$(tput setaf 6)
+blanco=$(tput setaf 15)
+reset=$(tput sgr0)
+
+
+echo "${amarillo}Vamos a jugar ahorcado, trata de adivinar la palabra:${reset}"
 
 palabras=("linux" "computadora" "sistema operativo" "comando" "terminal")
 num_palabras=${#palabras[@]}
@@ -27,9 +39,9 @@ errores=0
 while true; do
 echo ""
 echo "$progreso"
-echo "Vidas: $vidas"
-echo "Errores: $errores/$vidas_tot"
-echo -n "Ingresa una letra: " 
+echo "${rosa}Vidas: $vidas${reset}"
+echo "${rojo}Errores: $errores/$vidas_tot${reset}"
+echo -n "${morado}Ingresa una letra${reset}: " 
 read -n1 letra
 echo ""
 
@@ -58,13 +70,13 @@ if [ "$encontrado" = false ]; then
 fi
 
 if [[ "$progreso" != *"_"* ]]; then
-	echo "¡Felicidades, adivinaste la palabra!"
-	echo "Palabra: ${palabra}"
+	echo "${verde_elect}¡Felicidades, adivinaste la palabra!${reset}"
+	echo "${verde_elect}Palabra:${cyan} ${palabra}${reset}"
 	break
 fi
 
 if [ $vidas -le 0 ]; then 
-	echo "Has perdido :( , la palabra era: $palabra"
+	echo "${cyan}Has perdido :( , la palabra era: $palabra${reset}"
 	break
 fi
 done
