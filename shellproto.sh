@@ -23,7 +23,11 @@ function comandos(){
 	return 0
 	;;
 	infosis)
-	source ./infosis.sh
+	./infosis.sh
+	return 0
+	;;
+	juego)
+	./juego.sh
 	return 0
 	;;
 	*)
