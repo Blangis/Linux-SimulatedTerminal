@@ -30,14 +30,25 @@ function comandos(){
 	./juego.sh
 	return 0
 	;;
+	fecha)
+	  echo "$(cat /sys/class/rtc/rtc0/date) $(cat /sys/class/rtc/rtc0/time)"
+	;;
+	hora)
+	  echo "$(cat /sys/class/rtc/rtc0/date) $(cat /sys/class/rtc/rtc0/time)"
+	;;
+	musica)
+	  ./reproductor.sh
+	;;
 	*)
 	 return 1
 	 ;;
   esac
 }
 
+
+
 while true; do
-  read -rp "mi-terminal> " comando
+  read -rp "$(whoami) en $(basename "$PWD")  >>" comando
   [[ -z "$comando" ]] && continue
   comandos "$comando"
   if [[ $? -eq 0 ]]; then
